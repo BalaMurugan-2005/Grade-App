@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeMaster | Marks Entry</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/teacher/markentry.css">
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo">Grade<span>Master</span></div>
+        </div>
+        <div class="nav-right">
+            <div class="profile" id="profile">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="#"><i class="fas fa-user-circle"></i> View Profile</a>
+                <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <!-- In the sidebar section, update the links -->
+<ul class="sidebar-menu">
+    <li><a href="/teacher/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+    <li><a href="/teacher/marks" class="active"><i class="fas fa-edit"></i> Marks Entry</a></li>
+    <li><a href="/teacher/rankings"><i class="fas fa-chart-line"></i> View Ranks</a></li>
+    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+    <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+</ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <h1 class="page-title"><i class="fas fa-edit"></i> Marks Entry System</h1>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab active" data-tab="mark-entry">Mark Entry</div>
+            <div class="tab" data-tab="publish">Publish Results</div>
+        </div>
+
+        <!-- Mark Entry Tab -->
+        <div class="tab-content active" id="mark-entry">
+            <!-- Student Selection -->
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-user-graduate"></i>
+                    <h2 class="card-title">Select Student</h2>
+                </div>
+                <div class="students-container" id="studentsContainer">
+                    <!-- Students will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Selected Student Info -->
+            <div class="card" id="selectedStudentCard" style="display: none;">
+                <div class="card-header">
+                    <i class="fas fa-user-check"></i>
+                    <h2 class="card-title">Enter Marks for <span id="selectedStudentName"></span></h2>
+                </div>
+                <div class="student-card">
+                    <div class="student-avatar" id="selectedStudentAvatar">S</div>
+                    <div class="student-info">
+                        <div class="student-name" id="selectedStudentFullName">Student Name</div>
+                        <div class="student-details">
+                            Roll No: <span id="selectedStudentRoll">-</span> | 
+                            Class: <span id="selectedStudentClass">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marks Entry Form -->
+                <form id="marksForm">
+                    <div class="marks-form">
+                        <div class="form-group">
+                            <label for="tamil">Tamil</label>
+                            <input type="number" id="tamil" name="tamil" min="0" max="100" placeholder="Enter marks">
+                        </div>
+                        <div class="form-group">
+                            <label for="english">English</label>
+                            <input type="number" id="english" name="english" min="0" max="100" placeholder="Enter marks">
+                        </div>
+                        <div class="form-group">
+                            <label for="maths">Mathematics</label>
+                            <input type="number" id="maths" name="maths" min="0" max="100" placeholder="Enter marks">
+                        </div>
+                        <div class="form-group">
+                            <label for="science">Science</label>
+                            <input type="number" id="science" name="science" min="0" max="100" placeholder="Enter marks">
+                        </div>
+                        <div class="form-group">
+                            <label for="social">Social Science</label>
+                            <input type="number" id="social" name="social" min="0" max="100" placeholder="Enter marks">
+                        </div>
+                    </div>
+
+                    <!-- Voice Input -->
+                    <div class="voice-input">
+                        <div class="voice-status" id="voiceStatus">Click the microphone to enter marks by voice</div>
+                        <button type="button" class="voice-btn" id="voiceBtn">
+                            <i class="fas fa-microphone"></i> Voice Entry
+                        </button>
+                    </div>
+
+                    <!-- Voice Instructions -->
+                    <div class="voice-instructions">
+                        <h4><i class="fas fa-info-circle"></i> Voice Command Examples:</h4>
+                        <ul>
+                            <li>"Tamil 78" - Will enter 78 in Tamil and move to English</li>
+                            <li>"English 85" - Will enter 85 in English and move to Mathematics</li>
+                            <li>"Maths 92" - Will enter 92 in Maths and move to Science</li>
+                            <li>"Science 88" - Will enter 88 in Science and move to Social</li>
+                            <li>"Social 80" - Will enter 80 in Social and save the marks</li>
+                        </ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <button type="button" class="btn btn-secondary" id="clearBtn">
+                            <i class="fas fa-eraser"></i> Clear
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save Marks
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Publish Tab -->
+        <div class="tab-content" id="publish">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-paper-plane"></i>
+                    <h2 class="card-title">Publish Results</h2>
+                </div>
+                <div id="publishStatus">
+                    <p>Click the button below to verify and publish all student results.</p>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" id="verifyBtn">
+                            <i class="fas fa-check-circle"></i> Verify All Marks
+                        </button>
+                        <button class="btn btn-success" id="publishBtn" disabled>
+                            <i class="fas fa-paper-plane"></i> Publish Results
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Verification Results -->
+            <div class="card" id="verificationResults" style="display: none;">
+                <div class="card-header">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h2 class="card-title">Verification Results</h2>
+                </div>
+                <div id="verificationDetails">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts -->
+        <div id="alertContainer"></div>
+    </main>
+
+    <script src="/frontend/js/teacher/markentery.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradeMaster | View Rank</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/students/view_rank.css">
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="logo">Grade<span>Master</span></div>
+        </div>
+        <div class="nav-right">
+            <div class="profile" id="profile">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="#"><i class="fas fa-user-circle"></i> View Profile</a>
+                <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <ul class="sidebar-menu">
+            <li><a href="Student_DashBoard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="View_Result.html"><i class="fas fa-file-invoice"></i> View Result</a></li>
+            <li><a href="view_rank.html" class="active"><i class="fas fa-trophy"></i> View Rank</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <h1 class="page-title"><i class="fas fa-trophy"></i> Class Leaderboard</h1>
+        
+        <!-- Stats Cards -->
+        <!-- Stats Cards -->
+<div class="stats-container">
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-info">
+            <h3 id="totalStudents">0</h3>
+            <p>Total Students</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="stat-info">
+            <h3 id="yourRank">-</h3>
+            <p>Your Rank</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-percentage"></i></div>
+        <div class="stat-info">
+            <h3 id="yourPercentage">0%</h3>
+            <p>Your Percentage</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i class="fas fa-medal"></i></div>
+        <div class="stat-info">
+            <h3 id="yourGrade">-</h3>
+            <p>Your Grade</p>
+        </div>
+    </div>
+</div>
+
+        <!-- Search and Actions -->
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search by name or roll number...">
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-secondary" id="refreshBtn">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button class="btn btn-primary" id="dashboardBtn">
+                    <i class="fas fa-arrow-left"></i> Back to Dashboard
+                </button>
+            </div>
+        </div>
+
+        <!-- Ranking Table -->
+        <!-- Ranking Table -->
+<div class="ranking-container">
+    <table class="ranking-table">
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Total Marks</th>
+                <th>Percentage</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will load here -->
+        </tbody>
+    </table>
+</div>
+
+    </main>
+
+    <script src="/frontend/js/student/view_rank.js"></script>
+</body>
+</html>
